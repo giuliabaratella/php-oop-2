@@ -1,0 +1,34 @@
+:root {
+--color-bg: #1a1423ff;
+--color-dark: #372549ff;
+--color-accent: #ff8811ff;
+--color-light: #d3bcccff;
+--color-white: white;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-white);
+}
+header nav{
+    background-color: var(--color-dark) !important;
+}
+header nav a{
+    color: var(--color-white) !important;
+    font-weight: bold;
+}
+header nav a:hover{
+    color: var(--color-accent) !important;
+}
+.card {
+    transition: all 0.2s;
+    background-color: var(--color-dark);
+    color: var(--color-light);
+}
+.card:hover{
+    cursor: pointer;
+    transform: scale(0.99);
+}
+.card i {
+color: var(--color-accent);
+}

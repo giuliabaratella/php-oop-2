@@ -1,6 +1,8 @@
 </main>
-<footer class="container">
-    Footer
+<footer class="container d-flex justify-content-center ">
+    <div class="mb-5">
+        © OOP website 2023
+    </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

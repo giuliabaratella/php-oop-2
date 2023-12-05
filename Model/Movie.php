@@ -49,7 +49,7 @@ class Movie
         $image = $this->poster_path;
         $custom1 = $this->getGenres();
         $custom2 = $this->voteStars();
-        // $custom3 = $this->getLanguage($this->original_language);
+        $custom3 = $this->getLanguage($this->original_language);
         include __DIR__ . "/../Views/card.php";
 
     }

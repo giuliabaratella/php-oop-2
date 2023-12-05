@@ -27,6 +27,9 @@
             <li>
                 <a href="books.php">Books</a>
             </li>
+            <li>
+                <a href="videogames.php">Videogames</a>
+            </li>
         </ul>
     </header>
 

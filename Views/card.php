@@ -8,16 +8,25 @@
             <p class="card-text">
                 <?= $overview ?>
             </p>
-            <div>
-                <?= $custom1 ?>
-            </div>
+            <?php if (isset($custom1)) { ?>
+                <div>
+                    <?= $custom1 ?>
+                </div>
+            <?php } ?>
+
             <div class="d-flex justify-content-between align-items-flex-start">
-                <small>
-                    <?= $custom2 ?>
-                </small>
-                <!-- <div style="width: 40px">
-                    <img src="<?php echo $custom4 ?>" alt="language" class="w-100">
-                </div> -->
+                <?php if (isset($custom2)) { ?>
+                    <small>
+                        <?= $custom2 ?>
+                    </small>
+                <?php } ?>
+
+                <?php if (isset($custom3)) { ?>
+                    <div style="width: 40px">
+                        <img src="<?php echo $custom3 ?>" alt="language" class="w-100">
+                    </div>
+                <?php } ?>
+
 
             </div>
 

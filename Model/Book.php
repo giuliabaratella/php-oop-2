@@ -1,5 +1,6 @@
 <?php
-class Book
+include __DIR__ . "/Product.php";
+class Book extends Product
 {
     public string $title;
     public string $longDescription;
@@ -7,8 +8,9 @@ class Book
     public array $authors;
     public array $categories;
 
-    public function __construct($title, $description, $image, $authors, $categories)
+    public function __construct($title, $description, $image, $authors, $categories, $quantity, $price)
     {
+        parent::__construct($quantity, $price);
         $this->title = $title;
         $this->longDescription = $description;
         $this->thumbnailUrl = $image;
@@ -22,7 +24,9 @@ class Book
 
         $books = [];
         foreach ($bookList as $book) {
-            $books[] = new Book($book['title'], $book['longDescription'], $book['thumbnailUrl'], $book['authors'], $book['categories']);
+            $quantity = Product::getQuantity();
+            $price = Product::getPrice();
+            $books[] = new Book($book['title'], $book['longDescription'], $book['thumbnailUrl'], $book['authors'], $book['categories'], $quantity, $price);
         }
         // var_dump($books[0]);
         return $books;
@@ -35,6 +39,8 @@ class Book
         $image = $this->thumbnailUrl;
         $custom1 = $this->getAuthors();
         $custom2 = $this->getCategories();
+        $price = $this->price;
+        $quantity = $this->quantity;
         include __DIR__ . "/../Views/card.php";
     }
     private function getAuthors()

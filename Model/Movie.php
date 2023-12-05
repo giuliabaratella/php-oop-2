@@ -1,7 +1,8 @@
 <?php
 include __DIR__ . "/Genre.php";
+include __DIR__ . "/Product.php";
 
-class Movie
+class Movie extends Product
 {
     public int $id;
     public string $title;
@@ -11,8 +12,9 @@ class Movie
     public array $genres;
     public string $original_language;
 
-    function __construct($id, $title, $overview, $vote, $image, $genres, $language)
+    function __construct($id, $title, $overview, $vote, $image, $genres, $language, $quantity, $price)
     {
+        parent::__construct($quantity, $price);
         $this->id = $id;
         $this->title = $title;
         $this->overview = $overview;
@@ -50,6 +52,8 @@ class Movie
         $custom1 = $this->getGenres();
         $custom2 = $this->voteStars();
         $custom3 = $this->getLanguage($this->original_language);
+        $price = $this->price;
+        $quantity = $this->quantity;
         include __DIR__ . "/../Views/card.php";
 
     }
@@ -91,11 +95,12 @@ class Movie
                     $moviegenres[] = $rnd_genre;
                 }
             }
-
-            $movies[] = new Movie($item['id'], $item['title'], $item['overview'], $item['vote_average'], $item['poster_path'], $moviegenres, $item['original_language']);
+            $quantity = Product::getQuantity();
+            $price = Product::getPrice();
+            $movies[] = new Movie($item['id'], $item['title'], $item['overview'], $item['vote_average'], $item['poster_path'], $moviegenres, $item['original_language'], $quantity, $price);
         }
 
-        // var_dump($movies);
+        // var_dump($movies[0]);
         return $movies;
 
 

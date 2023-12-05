@@ -26,8 +26,14 @@
                         <img src="<?php echo $custom3 ?>" alt="language" class="w-100">
                     </div>
                 <?php } ?>
-
-
+            </div>
+            <div>
+                Price: €
+                <?php echo $price ?>
+            </div>
+            <div>
+                In stock:
+                <?php echo $quantity ?>
             </div>
 
         </div>

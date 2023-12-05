@@ -27,13 +27,15 @@
                     </div>
                 <?php } ?>
             </div>
-            <div>
-                Price: €
-                <?php echo $price ?>
-            </div>
-            <div>
-                In stock:
-                <?php echo $quantity ?>
+            <div class="d-flex justify-content-between ">
+                <div>
+                    Price: €
+                    <?php echo $price ?>
+                </div>
+                <div>
+                    In stock:
+                    <?php echo $quantity ?>
+                </div>
             </div>
 
         </div>

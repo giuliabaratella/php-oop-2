@@ -22,7 +22,11 @@
     <header>
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <div class="logo-box">
+                        <img src="img/OOP-logo.png" alt="OOp shop">
+
+                    </div>
                     <h1>OOP</h1>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"

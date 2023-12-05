@@ -19,7 +19,15 @@
 
 <body>
     <header class="container">
-        <h1>OOP - Movies</h1>
+        <h1>OOP</h1>
+        <ul>
+            <li>
+                <a href="index.php">Movies</a>
+            </li>
+            <li>
+                <a href="books.php">Books</a>
+            </li>
+        </ul>
     </header>
 
     <main class="container">

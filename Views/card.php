@@ -9,16 +9,16 @@
                 <?= $overview ?>
             </p>
             <div>
-                <?= $genres ?>
+                <?= $custom1 ?>
             </div>
             <div class="d-flex justify-content-between align-items-flex-start">
                 <small>
-                    <?= $vote ?>
+                    <?= $custom2 ?>
                 </small>
+                <!-- <div style="width: 40px">
+                    <img src="<?php echo $custom4 ?>" alt="language" class="w-100">
+                </div> -->
 
-                <div style="width: 40px">
-                    <img src="<?php echo $flag ?>" alt="language" class="w-100">
-                </div>
             </div>
 
         </div>

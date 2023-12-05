@@ -46,10 +46,10 @@ class Movie
     {
         $title = $this->title;
         $overview = substr($this->overview, 0, 150);
-        $vote = $this->voteStars();
         $image = $this->poster_path;
-        $genres = $this->getGenres();
-        $flag = $this->getLanguage($this->original_language);
+        $custom1 = $this->getGenres();
+        $custom2 = $this->voteStars();
+        // $custom3 = $this->getLanguage($this->original_language);
         include __DIR__ . "/../Views/card.php";
 
     }

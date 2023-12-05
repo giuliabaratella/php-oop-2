@@ -22,7 +22,7 @@
     <header>
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand d-flex align-items-center" href="#">
+                <a class="navbar-brand d-flex align-items-center" href="index.php">
                     <div class="logo-box">
                         <img src="img/OOP-logo.png" alt="OOp shop">
 

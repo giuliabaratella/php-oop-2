@@ -37,6 +37,7 @@ header nav a:hover{
     transition: all 0.2s;
     background-color: var(--color-dark);
     color: var(--color-light);
+    height: 100%;
 }
 .card:hover{
     cursor: pointer;

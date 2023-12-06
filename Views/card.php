@@ -36,6 +36,12 @@
                         <img src="<?php echo $custom3 ?>" alt="language" class="w-100">
                     </div>
                 <?php } ?>
+
+                <?php if(isset($flagError)) { ?>
+                    <div class="alert alert-danger">
+                        <?= $flagError ?>
+                    </div>
+                <?php } ?>
             </div>
             <div class="d-flex justify-content-between ">
                 <div>

@@ -56,7 +56,16 @@ class Movie extends Product {
             }
 
         }
+
+        try {
+            $flag = $this->getLanguage($this->original_language);
+        } catch (Exception $e) {
+            $flagError = $e->getmessage();
+        }
+
+
         $cardItem = [
+            'flagError' => $flagError ?? null,
             'error' => $error ?? '',
             'discount' => $this->getDiscount(),
             'image' => $this->poster_path,
@@ -64,7 +73,7 @@ class Movie extends Product {
             'overview' => substr($this->overview, 0, 150),
             'custom1' => $this->getGenres(),
             'custom2' => $this->voteStars(),
-            'custom3' => $this->getLanguage($this->original_language),
+            'custom3' => $flag ?? null,
             'price' => $this->price,
             'quantity' => $this->quantity
 
@@ -73,7 +82,8 @@ class Movie extends Product {
 
     }
 
-    public function getLanguage($lan) {
+    private function getLanguage($lan) {
+
         $flags = [
             'ca',
             'de',
@@ -84,13 +94,13 @@ class Movie extends Product {
             'kr',
             'us',
         ];
+
         if(!in_array($lan, $flags)) {
-            $flag = 'img/noflag.png';
+            throw new Exception("flag not listed");
         } else {
             $flag = "img/".$lan.".svg";
+            return $flag;
         }
-        return $flag;
-
     }
 
     public static function fetchAll() {

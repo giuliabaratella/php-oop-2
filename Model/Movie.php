@@ -2,10 +2,12 @@
 include __DIR__."/Genre.php";
 include __DIR__."/Product.php";
 include __DIR__."/../Traits/DrawCard.php";
+include __DIR__."/../Traits/Discount.php";
 
 
 class Movie extends Product {
     use DrawCard;
+    use Discount;
     public int $id;
     public string $title;
     public string $overview;
@@ -23,6 +25,7 @@ class Movie extends Product {
         $this->poster_path = $image;
         $this->genres = $genres;
         $this->original_language = $language;
+        $this->discount = 0;
     }
 
 
@@ -45,7 +48,11 @@ class Movie extends Product {
     }
 
     public function formatCard() {
+        if(ceil($this->vote_average) <= 6) {
+            $this->setDiscount(20);
+        }
         $cardItem = [
+            'discount' => $this->getDiscount(),
             'image' => $this->poster_path,
             'title' => $this->title,
             'overview' => substr($this->overview, 0, 150),

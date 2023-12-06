@@ -38,6 +38,7 @@ header nav a:hover{
     background-color: var(--color-dark);
     color: var(--color-light);
     height: 100%;
+    position: relative;
 }
 .card:hover{
     cursor: pointer;
@@ -45,4 +46,14 @@ header nav a:hover{
 }
 .card i {
 color: var(--color-accent);
+}
+.discount{
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    height: 50px;
+    width: 50px;
+    border-radius: 10%;
+    background-color: var(--color-accent);
+    color: var(--color-white);
 }

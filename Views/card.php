@@ -1,5 +1,11 @@
 <div class="col-12 col-md-4 col-lg-3 mb-3">
     <div class="card">
+        <?php if(isset($discount) && $discount !== 0) { ?>
+            <div class="discount d-flex justify-content-center align-items-center fw-bold">
+                -
+                <?= $discount ?>%
+            </div>
+        <?php } ?>
         <img src="<?= $image ?>" class="card-img-top my-ratio" alt="<?= $title ?>">
         <div class="card-body">
             <h5 class="card-title">
@@ -8,20 +14,20 @@
             <p class="card-text">
                 <?= $overview ?>
             </p>
-            <?php if (isset($custom1)) { ?>
+            <?php if(isset($custom1)) { ?>
                 <div>
                     <?= $custom1 ?>
                 </div>
             <?php } ?>
 
             <div class="d-flex justify-content-between align-items-flex-start">
-                <?php if (isset($custom2)) { ?>
+                <?php if(isset($custom2)) { ?>
                     <small>
                         <?= $custom2 ?>
                     </small>
                 <?php } ?>
 
-                <?php if (isset($custom3)) { ?>
+                <?php if(isset($custom3)) { ?>
                     <div style="width: 40px">
                         <img src="<?php echo $custom3 ?>" alt="language" class="w-100">
                     </div>

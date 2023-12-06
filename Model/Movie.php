@@ -49,9 +49,15 @@ class Movie extends Product {
 
     public function formatCard() {
         if(ceil($this->vote_average) <= 6) {
-            $this->setDiscount(20);
+            try {
+                $this->setDiscount(20);
+            } catch (Exception $e) {
+                $error = 'Exception: '.$e->getmessage();
+            }
+
         }
         $cardItem = [
+            'error' => $error ?? '',
             'discount' => $this->getDiscount(),
             'image' => $this->poster_path,
             'title' => $this->title,

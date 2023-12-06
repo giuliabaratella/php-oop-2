@@ -12,8 +12,12 @@
                 <?= $title ?>
             </h5>
             <p class="card-text">
-                <?= $overview ?>
-            </p>
+                <?php if(isset($error) && $error) { ?>
+                <div class="alert alert-danger">
+                    <?= $error ?>
+                </div>
+            <?php } ?>
+            <?= $overview ?>
             <?php if(isset($custom1)) { ?>
                 <div>
                     <?= $custom1 ?>
@@ -43,6 +47,8 @@
                     <?php echo $quantity ?>
                 </div>
             </div>
+            </p>
+
 
         </div>
     </div>

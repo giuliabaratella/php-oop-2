@@ -1,16 +1,16 @@
 <?php
-include __DIR__ . "/Views/header.php";
-include __DIR__ . "/Model/Videogame.php";
+include __DIR__."/Views/header.php";
+include __DIR__."/Model/Videogame.php";
 $games = Videogame::fetchAll();
 
 ?>
 
 <section>
-    <h2>Videogames</h2>
+    <h2 class="py-4">Videogames</h2>
     <div class="row">
         <?php
-        foreach ($games as $game) {
-            $game->printCard();
+        foreach($games as $game) {
+            $game->printCard($game->formatCard());
 
         }
         ?>
@@ -19,5 +19,5 @@ $games = Videogame::fetchAll();
 
 
 <?php
-include __DIR__ . "/Views/footer.php";
+include __DIR__."/Views/footer.php";
 ?>

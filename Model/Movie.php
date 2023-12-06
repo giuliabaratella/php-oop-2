@@ -1,9 +1,11 @@
 <?php
-include __DIR__ . "/Genre.php";
-include __DIR__ . "/Product.php";
+include __DIR__."/Genre.php";
+include __DIR__."/Product.php";
+include __DIR__."/../Traits/DrawCard.php";
 
-class Movie extends Product
-{
+
+class Movie extends Product {
+    use DrawCard;
     public int $id;
     public string $title;
     public string $overview;
@@ -12,8 +14,7 @@ class Movie extends Product
     public array $genres;
     public string $original_language;
 
-    function __construct($id, $title, $overview, $vote, $image, $genres, $language, $quantity, $price)
-    {
+    function __construct($id, $title, $overview, $vote, $image, $genres, $language, $quantity, $price) {
         parent::__construct($quantity, $price);
         $this->id = $id;
         $this->title = $title;
@@ -25,40 +26,41 @@ class Movie extends Product
     }
 
 
-    public function voteStars()
-    {
+    public function voteStars() {
         $vote = ceil($this->vote_average / 2);
         $template = "<p>";
-        for ($i = 1; $i <= 5; $i++) {
+        for($i = 1; $i <= 5; $i++) {
             $template .= $i <= $vote ? '<i class="fa-solid fa-star"></i>' : '<i class="fa-regular fa-star"></i>';
         }
         $template .= "</p>";
         return $template;
     }
-    public function getGenres()
-    {
+    public function getGenres() {
         $template = "<p>";
-        for ($i = 0; $i < count($this->genres); $i++) {
-            $template .= "<span class='badge bg-secondary'>" . $this->genres[$i]->name . "</span>";
+        for($i = 0; $i < count($this->genres); $i++) {
+            $template .= "<span class='badge bg-secondary'>".$this->genres[$i]->name."</span>";
         }
         $template .= "</p>";
         return $template;
     }
-    public function printCard()
-    {
-        $title = $this->title;
-        $overview = substr($this->overview, 0, 150);
-        $image = $this->poster_path;
-        $custom1 = $this->getGenres();
-        $custom2 = $this->voteStars();
-        $custom3 = $this->getLanguage($this->original_language);
-        $price = $this->price;
-        $quantity = $this->quantity;
-        include __DIR__ . "/../Views/card.php";
+
+    public function formatCard() {
+        $cardItem = [
+            'image' => $this->poster_path,
+            'title' => $this->title,
+            'overview' => substr($this->overview, 0, 150),
+            'custom1' => $this->getGenres(),
+            'custom2' => $this->voteStars(),
+            'custom3' => $this->getLanguage($this->original_language),
+            'price' => $this->price,
+            'quantity' => $this->quantity
+
+        ];
+        return $cardItem;
 
     }
-    public function getLanguage($lan)
-    {
+
+    public function getLanguage($lan) {
         $flags = [
             'ca',
             'de',
@@ -69,29 +71,28 @@ class Movie extends Product
             'kr',
             'us',
         ];
-        if (!in_array($lan, $flags)) {
+        if(!in_array($lan, $flags)) {
             $flag = 'img/noflag.png';
         } else {
-            $flag = "img/" . $lan . ".svg";
+            $flag = "img/".$lan.".svg";
         }
         return $flag;
 
     }
 
-    public static function fetchAll()
-    {
-        $movieString = file_get_contents(__DIR__ . '/movie_db.json');
+    public static function fetchAll() {
+        $movieString = file_get_contents(__DIR__.'/movie_db.json');
         $movieList = json_decode($movieString, true);
 
 
         $movies = [];
         $genres = Genre::fetchAll();
-        foreach ($movieList as $item) {
+        foreach($movieList as $item) {
             $moviegenres = [];
-            while (count($moviegenres) < count($item['genre_ids'])) {
+            while(count($moviegenres) < count($item['genre_ids'])) {
                 $index = rand(0, count($genres) - 1);
                 $rnd_genre = $genres[$index];
-                if (!in_array($rnd_genre, $moviegenres)) {
+                if(!in_array($rnd_genre, $moviegenres)) {
                     $moviegenres[] = $rnd_genre;
                 }
             }
